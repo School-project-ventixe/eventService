@@ -1,5 +1,5 @@
-﻿using Event.Extensions;
-using eventService.Data.Entities;
+﻿using eventService.Data.Entities;
+using eventService.Extensions;
 using eventService.Factories;
 using eventService.Models;
 using eventService.Repositories;
@@ -31,14 +31,14 @@ public class EventService(IEventRepository eventRepository) : IEventService
         return entity;
     }
 
-    public async Task<IEnumerable<EventEntity>> GetAllEvents()
+    public async Task<IEnumerable<Event>> GetAllEvents()
     {
         var events = await _eventRepository.GetAllAsync();
 
         if (events.IsNullOrEmpty())
             return [];
 
-        var model = events.Select(x => x.MapTo<EventEntity>());
+        var model = events.Select(x => x.MapTo<Event>()).ToList();
         return model;
     }
 

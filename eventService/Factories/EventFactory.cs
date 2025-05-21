@@ -12,6 +12,7 @@ public class EventFactory
         Location = dto.Location,
         StartDate = dto.StartDate,
         EndDate = dto.EndDate,
+        Price = dto.Price,
     };
 
     public static void UpdateEventEntity(EventEntity current, EventDto update)
@@ -21,6 +22,7 @@ public class EventFactory
         current.Location = update.Location;
         current.StartDate = update.StartDate;
         current.EndDate = update.EndDate;
+        current.Price = update.Price;
     }
 
 }
