@@ -7,7 +7,7 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace eventService.Services;
 
-public class EventService(IEventRepository eventRepository)
+public class EventService(IEventRepository eventRepository) : IEventService
 {
     private readonly IEventRepository _eventRepository = eventRepository;
 
@@ -15,7 +15,7 @@ public class EventService(IEventRepository eventRepository)
     {
         if (dto == null)
             return null!;
-        
+
         await _eventRepository.BeginTransactionAsync();
         var entity = EventFactory.CreateEntity(dto);
 
