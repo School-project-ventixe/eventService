@@ -8,10 +8,10 @@ public class EventFactory
     public static EventEntity CreateEntity(EventDto dto) => new()
     {
         EventName = dto.EventName,
+        ImageUrl = dto.ImageUrl,
         EventDescription = dto.EventDescription,
         Location = dto.Location,
         StartDate = dto.StartDate,
-        EndDate = dto.EndDate,
         Price = dto.Price,
     };
 
@@ -21,7 +21,7 @@ public class EventFactory
         current.EventDescription = update.EventDescription;
         current.Location = update.Location;
         current.StartDate = update.StartDate;
-        current.EndDate = update.EndDate;
+        current.ImageUrl = update.ImageUrl;
         current.Price = update.Price;
     }
 

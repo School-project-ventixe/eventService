@@ -1,5 +1,6 @@
 ﻿using eventService.Models;
 using eventService.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -12,6 +13,7 @@ public class EventsController(IEventService eventService) : ControllerBase
     public readonly IEventService _eventService = eventService;
 
     [HttpGet]
+    [AllowAnonymous]
     public async Task<IActionResult> GetAll()
     {
         var events = await _eventService.GetAllEvents();
@@ -20,6 +22,7 @@ public class EventsController(IEventService eventService) : ControllerBase
     }
 
     [HttpGet("{id}")]
+    [AllowAnonymous]
     public async Task<IActionResult> GetEvent(string id)
     {
         var getEvent = await _eventService.GetEventAsync(id);
